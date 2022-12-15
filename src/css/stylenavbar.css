@@ -1,0 +1,21 @@
+.stylenavbar
+{
+    background-color: rgb(13, 197, 197);
+    overflow: hidden;
+    height: 50px;
+}
+
+.stylenavbar a
+{
+    float: left;
+    color: #0a0909;
+    text-align: center;
+    padding: 17px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.stylenavbar a:hover
+{
+    color: rgb(235, 240, 240);
+    font-weight: 800;
+}
