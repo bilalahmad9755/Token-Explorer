@@ -25,16 +25,18 @@ function ERC20TransferFrom()
         event.preventDefault();
     }
     return(
-        <div>
+        <div className="componentStyle">
+            <h1 className="heading">TransferFrom</h1>
             <form onSubmit={submitForm}>
-                <label className="whitetxt">From:</label>
-                <input className='form-control' type="text" value={from} onChange={updateFrom}/>
-                <label className="whitetxt">To:</label>
-                <input className='form-control' type="text" value={to} onChange={updateTo}/>
-                <label  className="whitetxt">Amount:</label>
-                <input className='form-control' type="text" value={amount} onChange={updateAmount}/>
-                <Button variant='info' type="submit">TransferFrom</Button>
+                <label className="label"> From:</label>
+                <input className='input' type="text" value={from} onChange={updateFrom}/>
+                <label className="label"> To:</label>
+                <input className='input' type="text" value={to} onChange={updateTo}/>
+                <label  className="label"> Amount:</label>
+                <input className='input' type="text" value={amount} onChange={updateAmount}/>
+                <button className="button" type="submit"> TransferFrom</button>
             </form>
+            <br/>
         </div>
     );
 }

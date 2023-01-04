@@ -1,10 +1,13 @@
 import React from "react";
-import ConnectPhantom from "../hooks/connectPhantom";
-import SOLtransfer from "../hooks/SOLtransfer";
-import SelectNetwork from "../hooks/selectNetwork";
-import CreateToken from "../hooks/createToken";
-import MintTokens from "../hooks/mintTokens";
-import "../css/styleerc20.css";
+import ConnectPhantom from "../subComp/connectPhantom";
+import SOLtransfer from "../subComp/SOLtransfer";
+import SelectNetwork from "../subComp/selectNetwork";
+import CreateToken from "../subComp/createToken";
+import MintTokens from "../subComp/mintTokens";
+import SPLtokenInfo from "../subComp/tokenInfo";
+import TransferToken from "../subComp/transferToken";
+import CreateNFT from "../subComp/createNFT";
+import {Grid} from '@mui/material';
 class Solana extends React.Component
 {
     
@@ -23,11 +26,18 @@ class Solana extends React.Component
                 <br/>
                 <SelectNetwork></SelectNetwork>
                 <br/>
-                <SOLtransfer></SOLtransfer>
+                <Grid container gap={3}>
+                    <SOLtransfer></SOLtransfer>
+                    <CreateToken></CreateToken>
+                    <MintTokens></MintTokens>
+                    <SPLtokenInfo></SPLtokenInfo>
+                    <TransferToken></TransferToken>
+                </Grid>
+
                 <br/>
-                <CreateToken></CreateToken>
+                <h1 style={headingStyle}> Solana </h1>
                 <br/>
-                <MintTokens></MintTokens>
+                <CreateNFT></CreateNFT>
                 </div>
                 </React.Fragment>
         

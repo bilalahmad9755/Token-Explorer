@@ -108,12 +108,14 @@ async function mintSPLtoken(_address, _to, _amount)
 
             console.log('associated account created!');
             // mint tokens in associated account created above...
+            const info = await getTokenInfo(_address);
+            const amount = _amount * (10**info.decimals);
             const mintTx = new web3.Transaction().add(
                 splToken.createMintToInstruction(
                     mintAddress,
                     associatedAddress,
                     feePayer,
-                    _amount,
+                    amount,
                     [],
                     splToken.TOKEN_PROGRAM_ID
                 )
@@ -134,7 +136,9 @@ async function getTokenInfo(_tokenAddress)
 {
     const connection = new web3.Connection(state.network, "confirmed");
     const tokenAddress = new web3.PublicKey(_tokenAddress);
-    splToken.getMint(connection, tokenAddress, 'confirmed', splToken.TOKEN_PROGRAM_ID);
+    const tokenInfo = await splToken.getMint(connection, tokenAddress, 'confirmed', splToken.TOKEN_PROGRAM_ID);
+    console.log(tokenInfo);
+    return tokenInfo;
 }
 
-export {createSPLtoken, mintSPLtoken}
+export {createSPLtoken, mintSPLtoken, getTokenInfo}

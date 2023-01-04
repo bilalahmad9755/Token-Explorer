@@ -24,15 +24,21 @@ function ERC20Allowance()
         setSpender(event.target.value);
     }
     return(
-        <div>
+        <div className="componentStyle">
+            <h1 className="heading">Allowance</h1>
             <form onSubmit={getAllowance}>
-                <label className="whitetxt">Owner:</label>
-                <input className="form-control" type='text' value={owner} onChange={updateOwner}/>
-                <label className="whitetxt">Spender:</label>
-                <input className="form-control" type='text' value={spender} onChange={updateSpender}/>
-                <Button variant="info" type="submit">Allowance</Button>
-                <p className="whitetxt">Allowance {_allowance}</p>
+                <label className="label">Owner:</label>
+                <input className="input" type='text' value={owner} onChange={updateOwner}/>
+                <br/>
+                <label className="label">Spender:</label>
+                <input className="input" type='text' value={spender} onChange={updateSpender}/>
+                <br/>
+                <button className="button" type="submit">Allowance</button>
             </form>
+            <br/>
+            <p className="label">Allowance {_allowance}</p>
+            <br/>
+
         </div>
     );
 }

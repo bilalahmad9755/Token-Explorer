@@ -12,9 +12,10 @@ function ERC20TotalSupply()
         setSupply(_supply);
     }
     return(
-        <div>
-        <p className="whitetxt">Total Supply: {supply}</p>
-        <Button variant="info" onClick={getSupply}>TotalSupply</Button>
+        <div className="componentStyle">
+            <h1 className="heading">Total Supply</h1>
+        <p className="label">Total Supply: {supply}</p>
+        <button className="button" onClick={getSupply}>TotalSupply</button>
         </div>
     );
 }

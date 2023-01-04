@@ -1,7 +1,7 @@
 import React from "react";
 import ImportForm from "./importForm";
 import ERC20form from "./erc20form";
-import ConnectWallet from "../hooks/connectWallet";
+import ConnectWallet from "../subComp/connectWallet";
 import "../css/styleerc20.css";
 class ERC20 extends React.Component
 {

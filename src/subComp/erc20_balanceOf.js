@@ -18,13 +18,15 @@ function ERC20BalanceOf()
         setOwner(event.target.value);
     }
     return(
-        <div>
+        <div className="componentStyle">
+            <h1 className="heading">Balance</h1>
             <form onSubmit={getBalance}>
-                <label className="whitetxt">Owner:</label>
-                <input className="form-control" type='text' value={owner} onChange={updateOwner}/>
-                <Button type="submit" variant='info'>Balance</Button>
-                <p className="whitetxt">Balance: {balance}</p>
+                <label className="label">Owner:</label>
+                <input className="input" type='text' value={owner} onChange={updateOwner}/>
+                <button className="button" type="submit">Balance</button>
+                <p className= "label" >Balance: {balance}</p>
             </form>
+            <br/>
         </div>
     );
 }

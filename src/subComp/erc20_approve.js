@@ -21,14 +21,16 @@ function ERC20Approve()
         event.preventDefault();
     }
     return(
-        <div>
+        <div className="componentStyle">
+            <h1 className="heading">Approve</h1>
             <form onSubmit={submitForm}>
-                <label className="whitetxt">Spender:</label>
-                <input className="form-control" type="text" value={spender} onChange={updateSpender}/>
-                <label className="whitetxt">Amount:</label>
-                <input className="form-control" type="text" value={amount} onChange={updateAmount}/>
-                <Button variant="info" type="submit">Approve</Button>
+                <label className="label">Spender:</label>
+                <input className="input" type="text" value={spender} onChange={updateSpender}/>
+                <label className="label">Amount:</label>
+                <input className="input" type="text" value={amount} onChange={updateAmount}/>
+                <button className="button" type="submit">Approve</button>
             </form>
+            <br/>
         </div>
     );
 }
