@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
-import {connectWallet} from "../blockchain/erc20Token";
+import { connectDisconnect } from "../blockchain/metamask";
 import "bootstrap/dist/css/bootstrap.min.css";
-function ConnectWallet(){
+import { useSelector } from 'react-redux';
+function ConnectWallet()
+{
+    var address = useSelector((state) => state.redux.metamask.address);
 
-    const [connectedWallet, setWallet] = useState('ConnectWallet');
-    async function connect(event)
+    async function connect()
     {
-        let _connectedWallet = await connectWallet();
-        console.log(_connectedWallet);
-        setWallet(_connectedWallet);
+        await connectDisconnect();
     }
-        return (
-        <div> 
-            <Button variant="info" onClick={connect}>{connectedWallet}</Button> 
-        </div>
-        );
+    
+    return (
+    <div> 
+        <Button variant="info" onClick={connect}>{address}</Button>
+    </div>
+    );
     
 }
 
