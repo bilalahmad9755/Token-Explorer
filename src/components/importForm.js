@@ -1,46 +1,44 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import {importToken} from "../blockchain/erc20Token";
 import { Button } from "react-bootstrap";
 import "../css/whitetxt.css";
 
-class ImportForm extends React.Component
+function ImportForm()
 {
-    constructor(props) {
-        super(props);
-        this.state = {value: ''};
-    
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleChange(event) {
-        this.setState({value: event.target.value});
+  const [inputAddress, setInputAddress] = React.useState('');
+  var address = useSelector(state => state.redux.erc20Token.address);
+
+  function handleChange(event) {
+    setInputAddress(event.target.value);
+  }
+
+  function submit(event) 
+  {
+    // alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+    importToken(inputAddress);
+  }
+
+      const inputStyle = 
+      {
+        height: 25,
+        width: 300,
       }
-    
-      handleSubmit(event) {
-        // alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
-        // connecting to web3js
-        importToken(this.state.value);
-      }    
-    render()
-    {
-        const inputStyle = 
-        {
-            height: 25,
-            width: 300,
-        }
-        return(
-          <div>
-            <form onSubmit={this.handleSubmit}>
-            <label className="whitetxt">
-          Token Address:
-          <input className="form-control" placeholder="Token Address..." style={inputStyle} type="text" value={this.state.value} onChange={this.handleChange} />
-        </label>
-        <Button variant="info" type="submit" value="Import Token">Import Token</Button>
-      </form>
+      return(
+      <div>
+        <form onSubmit={submit}>
+          <label className="whitetxt">
+            Token Address:
+            <input className="form-control" style={inputStyle} onChange={handleChange} />
+          </label>
+          <Button variant="info" type="submit" value="Import Token">Import Token</Button>
+          <br/>
+          <Button variant="info">{address}</Button>
+          <br/>
+          <p></p>
+        </form>
       </div>
       );
     }
-}
-
 export default ImportForm

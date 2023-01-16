@@ -8,7 +8,7 @@ function App() {
       <div className="App">
       <header className="App-header">
         <p>
-          Ethereum Token Explorer
+          BlockChain Token Explorer...
         </p>
       </header>
     </div>

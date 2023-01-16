@@ -1,16 +1,13 @@
 import React from "react";
-import ERC20Transfer from "../subComp/erc20_transfer";
-import ERC20TransferFrom from "../subComp/erc20_transferFrom";
-import ERC20Approve from "../subComp/erc20_approve";
-import ERC20TotalSupply from "../subComp/erc20_totalSupply";
-import ERC20Allownce from "../subComp/erc20_allowance";
-import ERC20BalanceOf from "../subComp/erc20_balanceOf";
+import { ERC20Approve, ERC20Transfer, ERC20TotalSupply, ERC20Allowance, ERC20TransferFrom, ERC20BalanceOf } from "../subComp/erc20";
+import {Grid} from '@mui/material';
 class ERC20form extends React.Component
 {
   render()
     {
         return(
           <React.Fragment>
+          <Grid container gap = {3}>
           <ERC20Transfer></ERC20Transfer>
           <br/>
           <ERC20TransferFrom></ERC20TransferFrom>
@@ -19,9 +16,10 @@ class ERC20form extends React.Component
           <br/>
           <ERC20TotalSupply></ERC20TotalSupply>
           <br/>
-          <ERC20Allownce></ERC20Allownce>
+          <ERC20Allowance></ERC20Allowance>
           <br/>
           <ERC20BalanceOf></ERC20BalanceOf>
+          </Grid>
           </React.Fragment>    
         );
     }

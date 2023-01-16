@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import reduxReducer from './slice';
-const store=configureStore
+const store = configureStore
 (
   {
     reducer: 
@@ -9,4 +9,4 @@ const store=configureStore
     },
   }
 )
-export default store ;
+export default store;

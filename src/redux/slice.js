@@ -20,9 +20,13 @@ export const reduxSlice = createSlice({
     {
       state.metamask.isInstalled = action.payload.payload; 
     },
+    importERC20: (state, action) =>
+    {
+      state.erc20Token.address = action.payload.payload;
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const {connectMetamask, disconnectMetamask, metamaskInstalled} = reduxSlice.actions;
+export const {connectMetamask, disconnectMetamask, metamaskInstalled, importERC20} = reduxSlice.actions;
 export default reduxSlice.reducer;

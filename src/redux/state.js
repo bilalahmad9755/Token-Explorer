@@ -3,7 +3,6 @@ export const appState =
     metamask:
     {
         address : 'connectWallet',
-        connection : '', 
         isConnected : '',
         isInstalled : '',
         network : '',
@@ -11,14 +10,13 @@ export const appState =
     phantom:
     {
         address : 'connectWallet',
-        connection : '', 
         isConnected : '',
         isInstalled : '',
         network : '',
     },
     erc20Token:
     {
-        address : '',
+        address : 'no Token imported!',
     }
 }
 

@@ -1,4 +1,7 @@
 import contract_abi from "../abi/erc20.json";
+import store from "../redux/store";
+import { useSelector } from "react-redux";
+import {importERC20} from "../redux/slice";
 const Web3 = require("web3");
 var state = 
 {
@@ -7,32 +10,6 @@ var state =
     walletAddress: '',
     provider: '',
     web3: '',
-}
-async function connectWallet()
-{
-    if (typeof window.ethereum !== 'undefined') 
-    {
-        console.log('MetaMask is installed!');
-        try
-        {
-            state.provider = await window.ethereum;
-            // console.log("provider instance: ", state.provider);
-            let _accounts = await state.provider.request({ method: 'eth_requestAccounts' });
-            state.walletAddress = _accounts[0];
-            await initializeWeb3();
-        }
-        catch(Error)
-        {
-            console.log("metamask connection failed!");
-            return false;
-        }
-        return state.walletAddress;
-    }
-    else
-    {
-        console.log("Metamask is not installed!");
-        return false;
-    }
 }
 
 async function initializeWeb3()
@@ -44,25 +21,25 @@ async function initializeWeb3()
     }
     catch(Error)
     {
-        console.log("web3 initialization failed!")
+        console.log("web3 initialization failed!");
         return false;
     }
     
 }
-async function initializeContract()
-{state.tokenContract = await new state.web3.eth.Contract(contract_abi, state.tokenAddress);}
+
+async function initializeContract(_tokenAddress)
+{
+    let contract = await new state.web3.eth.Contract(contract_abi, _tokenAddress);
+    return contract;
+}
 
 async function importToken(_tokenAddress)
 {
     state.tokenAddress = _tokenAddress;
-    if(state.tokenAddress === '')
-    {
-        console.log("No address found!");
-        return false;
-    }
+    store.dispatch(importERC20({payload:_tokenAddress}));
     try
     {
-        await initializeContract();
+        await initializeContract(_tokenAddress);
         console.log("Contract Initialization Successful!");
         return true;
     }
@@ -71,7 +48,7 @@ async function importToken(_tokenAddress)
         console.log("Contract Initialization Failed!");
         return false;
     }
-
+    return true;
 }
 async function transfer(_to, _amount)
 {
@@ -141,4 +118,4 @@ async function balanceOf(_user)
     return _balance;
 }
 
-export {importToken, transfer, transferFrom, approve, totalSupply, allowance, balanceOf, connectWallet}
+export {importToken, transfer, transferFrom, approve, totalSupply, allowance, balanceOf}

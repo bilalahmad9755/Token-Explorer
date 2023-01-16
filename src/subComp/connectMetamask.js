@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { connectDisconnect } from "../blockchain/metamask";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useSelector } from 'react-redux';
-function ConnectWallet()
+function ConnectMetamask()
 {
     var address = useSelector((state) => state.redux.metamask.address);
 
@@ -20,4 +20,4 @@ function ConnectWallet()
     
 }
 
-export default ConnectWallet
+export default ConnectMetamask
